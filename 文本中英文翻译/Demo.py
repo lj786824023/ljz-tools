@@ -6,7 +6,8 @@ from PySide6 import QtWidgets
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QMainWindow, QTableWidgetItem
 from openpyxl.reader.excel import load_workbook
-from ui.ColTransUI import Ui_MainWindow
+
+from 文本中英文翻译.TextTransUI import Ui_MainWindow
 
 
 class MyMainWindow(QMainWindow):
@@ -17,7 +18,7 @@ class MyMainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.ui.btn_trans.clicked.connect(self.trans_columns)  # 按钮绑定
         self.ui.btn_save.clicked.connect(self.save_file)  # 按钮绑定
-        self.dir_file = os.path.dirname(sys.argv[0]) + "/_internal/aaa_etc/column_trans.xlsx"  # 配置文件路径：当前
+        self.dir_file = os.path.dirname(sys.argv[0]) + "\\文本中英文翻译.xlsx"  # 配置文件路径：当前
         self.ui.label.setText(self.dir_file)
         self.load_file()  # 加载文件内容
         # 表头居左
@@ -28,10 +29,10 @@ class MyMainWindow(QMainWindow):
     def save_file(self):
         """保存文件"""
         wb = openpyxl.Workbook()  # 新建工作簿
-        sheet = wb.create_sheet("字段列表", 0)  # 新建sheet
-        sheet["A1"] = "字段中文名"
-        sheet["B1"] = "生成中文名"
-        sheet["C1"] = "生成英文名"
+        sheet = wb.create_sheet("文本翻译", 0)  # 新建sheet
+        sheet["A1"] = "中文"
+        sheet["B1"] = "中文拆分"
+        sheet["C1"] = "英文拆分"
         sheet["D1"] = "调整后"
         sheet = wb.create_sheet("修改记录", 1)  # 新建sheet
         sheet["A1"] = "修改日期"
@@ -39,12 +40,12 @@ class MyMainWindow(QMainWindow):
         sheet["C1"] = "修改说明"
         sheet["D1"] = "修改原因"
         sheet["E1"] = "备注"
-        sheet = wb.create_sheet("术语汇总", 2)  # 新建sheet
-        sheet["A1"] = "名词中文名"
-        sheet["B1"] = "名称英文名"
+        sheet = wb.create_sheet("文本词典", 2)  # 新建sheet
+        sheet["A1"] = "中文"
+        sheet["B1"] = "英文"
         sheet["C1"] = "使用次数"
         for index, tbw in enumerate([self.ui.tbw_1, self.ui.tbw_2, self.ui.tbw_3]):  # 遍历3个表单
-            sheet_key = self.ui.tabWidget.tabText(index)  # 字段列表、修改记录、术语汇总
+            sheet_key = self.ui.tabWidget.tabText(index)  # 文本翻译、修改记录、文本词典
             sheet = wb[sheet_key]  # 获取sheet
             for row in range(tbw.rowCount()):  # 遍历行
                 for col in range(tbw.columnCount()):  # 遍历列
@@ -59,8 +60,8 @@ class MyMainWindow(QMainWindow):
 
     def load_file(self):
         wb = load_workbook(self.dir_file)
-        # 读取字段列表
-        sheet = wb["字段列表"]
+        # 读取文本翻译
+        sheet = wb["文本翻译"]
         max_row = sheet.max_row
         self.ui.tbw_1.setRowCount(max_row - 1)  # 忽略首行
         self.ui.tbw_1.setRowCount(max_row - 1)  # 忽略首行
@@ -83,10 +84,10 @@ class MyMainWindow(QMainWindow):
                 self.ui.tbw_2.setItem(index_row, index_col, item)
         self.ui.tbw_2.resizeColumnsToContents()  # 单元格自适应
 
-        # 读取术语汇总
-        sheet = wb["术语汇总"]
+        # 读取文本词典
+        sheet = wb["文本词典"]
         max_row = sheet.max_row
-        self.ui.tbw_3.setRowCount(max_row - 1)
+        self.ui.tbw_3.setRowCount(max_row)
         self.data_3 = []
         self.trans_dicts = {}
         for row in sheet.rows:
@@ -101,7 +102,7 @@ class MyMainWindow(QMainWindow):
         self.ui.tbw_3.resizeColumnsToContents()  # 单元格自适应
 
     def trans_columns(self):
-        # 获取字段列表翻译清单
+        # 获取文本翻译翻译清单
         for row in range(self.ui.tbw_1.rowCount()):
             item = self.ui.tbw_1.item(row, 0)
             if item:
@@ -149,3 +150,4 @@ if __name__ == "__main__":
     ui = MyMainWindow()
     ui.show()
     sys.exit(app.exec())
+    # pyinstaller.exe -F --paths="C:\Users\lojn\PycharmProjects\ljz-tools\文本中英文翻译;C:\Users\lojn\PycharmProjects\ljz-tools\MyWidget" .\Demo.py -n 文本中英文翻译
