@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ColTransUI.ui'
+## Form generated from reading UI file 'TextTransUI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.6.3
 ##
@@ -16,10 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QHeaderView, QMainWindow,
-    QSizePolicy, QSpacerItem, QTabWidget, QTableWidgetItem,
-    QVBoxLayout, QWidget)
+    QMenuBar, QSizePolicy, QSpacerItem, QStatusBar,
+    QTabWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
-from MyWidget import MyTableWidget
+from MyWidget.TableWidget import TableWidget
 from qfluentwidgets import (BodyLabel, PushButton)
 
 class Ui_MainWindow(object):
@@ -67,12 +67,12 @@ class Ui_MainWindow(object):
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setTabPosition(QTabWidget.South)
-        self.tabWidget.setTabShape(QTabWidget.Triangular)
+        self.tabWidget.setTabShape(QTabWidget.Rounded)
         self.tab_1 = QWidget()
         self.tab_1.setObjectName(u"tab_1")
         self.horizontalLayout_2 = QHBoxLayout(self.tab_1)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.tbw_1 = MyTableWidget(self.tab_1)
+        self.tbw_1 = TableWidget(self.tab_1)
         if (self.tbw_1.columnCount() < 4):
             self.tbw_1.setColumnCount(4)
         __qtablewidgetitem = QTableWidgetItem()
@@ -95,7 +95,7 @@ class Ui_MainWindow(object):
         self.tab_2.setObjectName(u"tab_2")
         self.horizontalLayout_3 = QHBoxLayout(self.tab_2)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.tbw_2 = MyTableWidget(self.tab_2)
+        self.tbw_2 = TableWidget(self.tab_2)
         if (self.tbw_2.columnCount() < 5):
             self.tbw_2.setColumnCount(5)
         __qtablewidgetitem4 = QTableWidgetItem()
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         self.tab_3.setObjectName(u"tab_3")
         self.horizontalLayout_4 = QHBoxLayout(self.tab_3)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.tbw_3 = MyTableWidget(self.tab_3)
+        self.tbw_3 = TableWidget(self.tab_3)
         if (self.tbw_3.columnCount() < 3):
             self.tbw_3.setColumnCount(3)
         __qtablewidgetitem9 = QTableWidgetItem()
@@ -138,6 +138,13 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.tabWidget)
 
         MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 800, 22))
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u"statusbar")
+        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
 
@@ -148,19 +155,19 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u5b57\u6bb5\u7ffb\u8bd1", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u6587\u672c\u4e2d\u82f1\u6587\u7ffb\u8bd1", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"/home/lojn/abc.xlsx", None))
         self.btn_trans.setText(QCoreApplication.translate("MainWindow", u"\u7ffb\u8bd1", None))
         self.btn_save.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58", None))
         ___qtablewidgetitem = self.tbw_1.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u5b57\u6bb5\u4e2d\u6587\u540d", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u4e2d\u6587", None));
         ___qtablewidgetitem1 = self.tbw_1.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210\u4e2d\u6587\u540d", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u4e2d\u6587\u62c6\u5206", None));
         ___qtablewidgetitem2 = self.tbw_1.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210\u82f1\u6587\u540d", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"\u82f1\u6587\u62c6\u5206", None));
         ___qtablewidgetitem3 = self.tbw_1.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"\u8c03\u6574\u540e", None));
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_1), QCoreApplication.translate("MainWindow", u"\u5b57\u6bb5\u5217\u8868", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_1), QCoreApplication.translate("MainWindow", u"\u6587\u672c\u7ffb\u8bd1", None))
         ___qtablewidgetitem4 = self.tbw_2.horizontalHeaderItem(0)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"\u4fee\u6539\u65e5\u671f", None));
         ___qtablewidgetitem5 = self.tbw_2.horizontalHeaderItem(1)
@@ -173,11 +180,11 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"\u5907\u6ce8", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"\u4fee\u6539\u8bb0\u5f55", None))
         ___qtablewidgetitem9 = self.tbw_3.horizontalHeaderItem(0)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"\u540d\u6b21\u4e2d\u6587", None));
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"\u4e2d\u6587", None));
         ___qtablewidgetitem10 = self.tbw_3.horizontalHeaderItem(1)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"\u540d\u6b21\u82f1\u6587", None));
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"\u82f1\u6587", None));
         ___qtablewidgetitem11 = self.tbw_3.horizontalHeaderItem(2)
         ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"\u4f7f\u7528\u6b21\u6570", None));
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"\u672f\u8bed\u6c47\u603b", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"\u6587\u672c\u8bcd\u5178", None))
     # retranslateUi
 
