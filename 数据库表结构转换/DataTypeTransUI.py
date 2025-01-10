@@ -99,7 +99,10 @@ class Ui_MainWindow(object):
         __qtablewidgetitem9 = QTableWidgetItem()
         __qtablewidgetitem9.setTextAlignment(Qt.AlignLeading|Qt.AlignVCenter);
         self.tableWidget.setHorizontalHeaderItem(9, __qtablewidgetitem9)
+        if (self.tableWidget.rowCount() < 20):
+            self.tableWidget.setRowCount(20)
         self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setRowCount(20)
 
         self.verticalLayout.addWidget(self.tableWidget)
 

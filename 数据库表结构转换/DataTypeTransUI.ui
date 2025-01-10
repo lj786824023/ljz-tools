@@ -74,6 +74,29 @@
     </item>
     <item>
      <widget class="TableWidget" name="tableWidget">
+      <property name="rowCount">
+       <number>20</number>
+      </property>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
       <column>
        <property name="text">
         <string>表英文名</string>
