@@ -6,7 +6,7 @@ from PySide6.QtGui import Qt
 from PySide6.QtWidgets import QMainWindow, QWidget, QListWidgetItem, QTableWidgetItem, QComboBox
 from loguru import logger
 from openpyxl.reader.excel import load_workbook
-from qfluentwidgets import InfoBar, InfoBarPosition, ComboBox
+from qfluentwidgets import InfoBar, InfoBarPosition, ComboBox, LineEdit
 
 from 表结构转换.ConfigFile import ConfigFile
 from 表结构转换.TableTransUI import Ui_MainWindow
@@ -235,14 +235,20 @@ class MyMainWindow(QMainWindow):
             combo.addItems(self.column_x_rule)
             combo.setCurrentIndex(self.column_x_rule.index(excel_data[row][2]))
             self.ui.tbw_setting.setCellWidget(row, 2, combo)
-            data = QTableWidgetItem(str(excel_data[row][3] or ""))  # 第4列
-            self.ui.tbw_setting.setItem(row, 3, data)
+            # data = QTableWidgetItem(str(excel_data[row][3] or ""))  # 第4列
+            # self.ui.tbw_setting.setItem(row, 3, data)
+            data = LineEdit()  # 第6列
+            data.setText(str(excel_data[row][3] or ""))
+            self.ui.tbw_setting.setCellWidget(row, 3, data)
             combo = ComboBox()  # 第5列
             combo.addItems(self.column_y_rule)
             combo.setCurrentIndex(self.column_y_rule.index(excel_data[row][4]))
             self.ui.tbw_setting.setCellWidget(row, 4, combo)
-            data = QTableWidgetItem(str(excel_data[row][5] or ""))  # 第6列
-            self.ui.tbw_setting.setItem(row, 5, data)
+            # data = QTableWidgetItem(str(excel_data[row][5] or ""))  # 第6列
+            # self.ui.tbw_setting.setItem(row, 5, data)
+            data = LineEdit()  # 第6列
+            data.setText(str(excel_data[row][5] or ""))
+            self.ui.tbw_setting.setCellWidget(row, 5, data)
 
 
 if __name__ == "__main__":

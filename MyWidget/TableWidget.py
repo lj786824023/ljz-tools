@@ -6,7 +6,8 @@ from PySide6.QtCore import Qt, Signal, Slot, QObject
 from PySide6.QtGui import QAction, QColor, QShortcut, QKeySequence
 from PySide6.QtWidgets import QApplication, QTableWidgetItem, QDialog, QGroupBox, QRadioButton, QVBoxLayout, \
     QPushButton, QHBoxLayout, QTableWidget, QWidget
-from qfluentwidgets import RoundMenu, TableWidget, RoundMenu, SmoothScrollDelegate, TableItemDelegate
+from qfluentwidgets import RoundMenu, TableWidget, RoundMenu, SmoothScrollDelegate, TableItemDelegate, PushButton, \
+    RadioButton
 
 
 class TableWidget(QTableWidget):
@@ -480,10 +481,10 @@ class DeleteInsertDialog(QDialog):
         self.groupBox.setFlat(True)
 
         # 1.1 创建RadioButton
-        self.radioButtonA = QRadioButton()
-        self.radioButtonB = QRadioButton()
-        self.radioButtonC = QRadioButton()
-        self.radioButtonD = QRadioButton()
+        self.radioButtonA = RadioButton()
+        self.radioButtonB = RadioButton()
+        self.radioButtonC = RadioButton()
+        self.radioButtonD = RadioButton()
 
         # 1.2 将RadioButton添加到GroupBox中
         gb_vbox = QVBoxLayout()
@@ -494,8 +495,8 @@ class DeleteInsertDialog(QDialog):
         self.groupBox.setLayout(gb_vbox)
 
         # 2. 创建确定和取消按钮
-        self.buttonOK = QPushButton("确定")
-        self.buttonCancel = QPushButton("取消")
+        self.buttonOK = PushButton("确定")
+        self.buttonCancel = PushButton("取消")
 
         # 2.1 将按钮添加到水平布局中
         hbox = QHBoxLayout()
@@ -598,6 +599,6 @@ class UsingCleverTW(QDialog):  # 测试类
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    w = TableWidget()
+    w = UsingCleverTW()
     w.show()
     sys.exit(app.exec())  # pyside6
