@@ -8,11 +8,8 @@ from PySide6.QtWidgets import QApplication, QTableWidgetItem, QDialog, QGroupBox
     QPushButton, QHBoxLayout, QTableWidget, QWidget
 from qfluentwidgets import RoundMenu, TableWidget, RoundMenu, SmoothScrollDelegate, TableItemDelegate
 
-from ui.MyWidget import MyTableWidget
-from ui.testPageTableWidget import PageTableWidget
 
-
-class TableWidget(QTableWidget):
+class MyTableWidget(QTableWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.copy_action = QAction("复制", self)
@@ -614,7 +611,7 @@ class UsingCleverTW(QDialog):  # 测试类
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     w = QWidget()
-    ui = PageTableWidget()
+    ui = MyTableWidget()
     ui.setupUi(w)
     ui.initUI()
     w.show()

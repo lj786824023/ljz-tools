@@ -3,17 +3,15 @@ import sys
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QWidget, QTableWidgetItem
 
-from ui.PageTableWidget import Ui_PageTableWidget
+from 表结构转换.PageTableWidget import Ui_PageTableWidget
 
-class PageTableWidget(QWidget,Ui_PageTableWidget):
 
-    def __init__(self,parent=None):
+class PageTableWidget(QWidget, Ui_PageTableWidget):
+
+    def __init__(self, parent=None):
         # super().__init__()
         super().__init__(parent)
         self.setupUi(self)
-        self.initUI()
-
-    def initUI(self):
 
         self.head = []  # 表头
         self.data = []  # 数据
@@ -23,6 +21,10 @@ class PageTableWidget(QWidget,Ui_PageTableWidget):
         self.cnt = 100  # 默认每页显示100条数
         self.cur_page = 1  # 默认当前显示页
         self.cnt_page = 1  # 默认总页数
+
+        self.initUI()
+
+    def initUI(self):
 
         self.cbb_cnt.currentIndexChanged.connect(self.setCnt)
         self.btn_first.clicked.connect(lambda: self.setCur_page(1))
@@ -80,8 +82,8 @@ if __name__ == "__main__":
     # w = QWidget()
     # w = QMainWindow()
     ui = PageTableWidget()
-    ui.head=('1','2','3')
-    ui.data=[('1','2','3'),('1','2','3'),('1','2','3')]
+    ui.head = ('1', '2', '3')
+    ui.data = [('1', '2', '3'), ('1', '2', '3'), ('1', '2', '3')]
     ui.showdata()
     ui.show()
     # ui.show()
@@ -92,7 +94,5 @@ if __name__ == "__main__":
     # ui.setupUi(w)
     # ui.initUI()
     # w.show()
-
-
 
     sys.exit(app.exec())  # pyside6

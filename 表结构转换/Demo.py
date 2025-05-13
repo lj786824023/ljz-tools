@@ -157,6 +157,10 @@ class MyMainWindow(QMainWindow):
         for setting in self.settings:
             self.ui.cbb_setting.addItem(setting)
 
+        self.ui.tbw_table.tbw_table.setRowCount(100)
+        self.ui.tbw_table.tbw_table.setColumnCount(9)
+        self.ui.tbw_table.tbw_table.setHorizontalHeaderLabels(('表英文名','表中文名','字段英文名','字段中文名','字段类型','长度','精度','转换后长度','转换后精度'))
+
         self.ui.tbw_setting.setRowCount(len(self.column_types))
 
     def rename_setting(self, item: QListWidgetItem):
@@ -202,6 +206,7 @@ class MyMainWindow(QMainWindow):
             self.createSuccessInfoBar('保存成功！')
         except:
             self.createErrorInfoBar('保存失败！文件可能已经打开')
+
     def show_setting(self, item: QListWidgetItem):
         """
         配置点击
