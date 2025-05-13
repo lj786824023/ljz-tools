@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1510</width>
+    <height>1027</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>转换</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+     background-color: rgb(237, 246, 248); /* rgb(240, 244, 249)(237, 246, 248) */
+ }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="Pivot" name="Pivot">
+        <property name="items_" stdset="0">
+         <string>Item1,开始转换
+Item2,转换配置</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true">#Item1,#Item2,#tab_sql,#tab_db,#tab_settings {
+  background-color: rgb(247, 249, 252); /* rgb(237, 246, 248) */
+  border: 1px solid rgb(220, 220, 220); /* 边框宽度、样式和颜色 */
+  border-radius: 8px; /*圆角度*/
+ }</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="Item1">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="ComboBox" name="cbb_setting">
+            <property name="items_" stdset="0">
+             <string>--选择配置文件--
+配置1
+配置2</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="PushButton" name="PushButton_2">
+            <property name="text">
+             <string>开始转换</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="PushButton" name="PushButton_3">
+            <property name="text">
+             <string>生成DDL</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="PushButton" name="PushButton">
+            <property name="text">
+             <string>清空页面</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="TableWidget" name="TableWidget">
+            <property name="rowCount">
+             <number>10</number>
+            </property>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <column>
+             <property name="text">
+              <string>表英文名</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>表中文名</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>字段英文名</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>字段中文名</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>字段类型</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>新建列</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>长度</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>转换后类型</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>转换后长度</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>转换后精度</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page">
+       <widget class="PageTableWidget" name="widget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>80</y>
+          <width>1161</width>
+          <height>661</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Item2">
+       <property name="styleSheet">
+        <string notr="true">#widget_setting_left,#widget_setting_right {
+  background-color: rgb(241, 243, 246); /* rgb(237, 246, 248) */
+  border: 1px solid rgb(220, 220, 220); /* 边框宽度、样式和颜色 */
+  border-radius: 8px; /*圆角度*/
+ }</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,4">
+        <item>
+         <widget class="QWidget" name="widget_setting_left" native="true">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="PushButton" name="btn_add_setting">
+               <property name="text">
+                <string>新增</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="PushButton" name="btn_del_setting">
+               <property name="text">
+                <string>删除</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="ListWidget" name="lsw_setting">
+             <property name="styleSheet">
+              <string notr="true">ListView,
+ListWidget {
+    background: transparent;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+    border: none;
+    /* font: 13px 'Segoe UI', 'Microsoft YaHei'; */
+    selection-background-color: transparent;
+    alternate-background-color: transparent;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+ListView::item,
+ListWidget::item {
+    background: transparent;
+    border: 1px;
+    padding-left: 11px;
+    padding-right: 11px;
+    height: 35px;
+}
+
+
+ListView::indicator,
+ListWidget::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    margin-right: 4px;
+}
+
+</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>配置1</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>配置2</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_setting_right" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="PushButton" name="btn_save_setting">
+               <property name="text">
+                <string>保存</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="TableWidget" name="TableWidget_2">
+             <property name="styleSheet">
+              <string notr="true">QTableView {
+    background: transparent;
+    outline: none;
+    border: none;
+    /* font: 13px 'Segoe UI', 'Microsoft YaHei'; */
+    selection-background-color: transparent;
+    alternate-background-color: transparent;
+}
+
+QTableView[isBorderVisible=true] {
+    border: 1px solid rgba(0, 0, 0, 15);
+}
+
+QTableView::item {
+    background: transparent;
+    border: 0px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 35px;
+}
+
+
+QTableView::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+
+QHeaderView {
+    background-color: transparent;
+}
+
+QHeaderView::section {
+    background-color: transparent;
+    color: rgb(96, 96, 96);
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid rgba(0, 0, 0, 15);
+    font: 13px 'Segoe UI', 'Microsoft YaHei', 'PingFang SC';
+}
+
+QHeaderView::section:horizontal {
+    border-left: none;
+    height: 33px;
+}
+
+QTableView[isBorderVisible=true] QHeaderView::section:horizontal {
+    border-top: none;
+}
+
+QHeaderView::section:horizontal:last {
+    border-right: none;
+}
+
+QHeaderView::section:vertical {
+    border-top: none;
+}
+
+QHeaderView::section:checked {
+    background-color: transparent;
+}
+
+QHeaderView::down-arrow {
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    margin-right: 6px;
+    image: url(:/qfluentwidgets/images/table_view/Down_black.svg);
+}
+
+QHeaderView::up-arrow {
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    margin-right: 6px;
+    image: url(:/qfluentwidgets/images/table_view/Up_black.svg);
+}
+
+QTableCornerButton::section {
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 15);
+}
+
+QTableCornerButton::section:pressed {
+    background-color: rgba(0, 0, 0, 12);
+}
+
+ListView,
+ListWidget {
+    background: transparent;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+    border: none;
+    /* font: 13px 'Segoe UI', 'Microsoft YaHei'; */
+    selection-background-color: transparent;
+    alternate-background-color: transparent;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+ListView::item,
+ListWidget::item {
+    background: transparent;
+    border: 1px;
+    padding-left: 11px;
+    padding-right: 11px;
+    height: 35px;
+}
+
+
+ListView::indicator,
+ListWidget::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    margin-right: 4px;
+}
+
+</string>
+             </property>
+             <row>
+              <property name="text">
+               <string>新建行</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>新建行</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>新建行</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>新建行</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>新建行</string>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>源类型</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>目标类型</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>长度转换规则</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>长度转换值</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>精度转换规则</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>精度转换值</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1510</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>Pivot</class>
+   <extends>QWidget</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ListWidget</class>
+   <extends>QListWidget</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>TableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PageTableWidget</class>
+   <extends>QWidget</extends>
+   <header>ui.testPageTableWidget</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

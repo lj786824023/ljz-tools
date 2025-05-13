@@ -1,0 +1,14 @@
+
+
+      # self.setWindowFlag(QtCore.Qt.FramelessWindowHint) # 设置窗口无边框
+        # self.setAttribute(QtCore.Qt.WA_TranslucentBackground) # 设置窗口的背景为半透明
+        # self.se
+
+
+pyinstaller打包时，默认搜索site-packages还有py文件所在当前目录
+
+from aaa import *
+需要用-p把aaa所在的上级文件夹包含
+pyinstaller.exe -p ..\..\ljz-tools -F .\Demo.py
+或用--paths包含
+pyinstaller.exe -F --paths="C:\Users\lojn\PycharmProjects\ljz-tools\文本中英文翻译;C:\Users\lojn\PycharmProjects\ljz-tools\MyWidget" .\Demo.py -n 文本中英文翻译
