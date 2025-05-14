@@ -63,6 +63,12 @@ Item2,转换配置</string>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="ComboBox" name="cbb_setting">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="items_" stdset="0">
              <string>--选择配置文件--
 配置1
@@ -71,14 +77,14 @@ Item2,转换配置</string>
            </widget>
           </item>
           <item>
-           <widget class="PushButton" name="PushButton_2">
+           <widget class="PushButton" name="btn_trans">
             <property name="text">
              <string>开始转换</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="PushButton" name="PushButton_3">
+           <widget class="PushButton" name="btn_ddl">
             <property name="text">
              <string>生成DDL</string>
             </property>
@@ -109,13 +115,273 @@ Item2,转换配置</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="PageTableWidget" name="tbw_table" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+           <widget class="ActionTableWidget" name="tbw_table">
+            <property name="rowCount">
+             <number>100</number>
             </property>
+            <property name="columnCount">
+             <number>20</number>
+            </property>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <column>
+             <property name="text">
+              <string>表英文名</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>表中文名</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>字段英文名</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>字段中文名</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>字段类型</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>字段类型(自动)</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>长度(自动)</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>精度(自动)</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>转换后长度</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>转换后精度</string>
+             </property>
+            </column>
+            <column/>
+            <column/>
+            <column/>
+            <column/>
+            <column/>
+            <column/>
+            <column/>
+            <column/>
+            <column/>
+            <column/>
+            <item row="0" column="0">
+             <property name="text">
+              <string>tab</string>
+             </property>
+            </item>
+            <item row="0" column="1">
+             <property name="text">
+              <string>表tab</string>
+             </property>
+            </item>
+            <item row="0" column="2">
+             <property name="text">
+              <string>c1</string>
+             </property>
+            </item>
+            <item row="0" column="4">
+             <property name="text">
+              <string>varchar(100)</string>
+             </property>
+            </item>
+            <item row="1" column="0">
+             <property name="text">
+              <string>tab</string>
+             </property>
+            </item>
+            <item row="1" column="1">
+             <property name="text">
+              <string>表tab</string>
+             </property>
+            </item>
+            <item row="1" column="2">
+             <property name="text">
+              <string>c2</string>
+             </property>
+            </item>
+            <item row="1" column="4">
+             <property name="text">
+              <string>char(10)</string>
+             </property>
+            </item>
+            <item row="2" column="0">
+             <property name="text">
+              <string>tab</string>
+             </property>
+            </item>
+            <item row="2" column="1">
+             <property name="text">
+              <string>表tab</string>
+             </property>
+            </item>
+            <item row="2" column="2">
+             <property name="text">
+              <string>c3</string>
+             </property>
+            </item>
+            <item row="2" column="4">
+             <property name="text">
+              <string>date</string>
+             </property>
+            </item>
+            <item row="3" column="0">
+             <property name="text">
+              <string>tab</string>
+             </property>
+            </item>
+            <item row="3" column="1">
+             <property name="text">
+              <string>表tab</string>
+             </property>
+            </item>
+            <item row="3" column="2">
+             <property name="text">
+              <string>c4</string>
+             </property>
+            </item>
+            <item row="3" column="4">
+             <property name="text">
+              <string>number(24,2)</string>
+             </property>
+            </item>
+            <item row="4" column="0">
+             <property name="text">
+              <string>tab</string>
+             </property>
+            </item>
+            <item row="4" column="1">
+             <property name="text">
+              <string>表tab</string>
+             </property>
+            </item>
+            <item row="4" column="2">
+             <property name="text">
+              <string>c5</string>
+             </property>
+            </item>
+            <item row="4" column="4">
+             <property name="text">
+              <string>date</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
@@ -507,10 +773,9 @@ ListWidget::indicator {
    <header>qfluentwidgets</header>
   </customwidget>
   <customwidget>
-   <class>PageTableWidget</class>
-   <extends>QWidget</extends>
-   <header location="global">testPageTableWidget</header>
-   <container>1</container>
+   <class>ActionTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header location="global">表结构转换.ActionTableWidget</header>
   </customwidget>
  </customwidgets>
  <resources/>

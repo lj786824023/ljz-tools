@@ -109,70 +109,13 @@ Item2,转换配置</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="TableWidget" name="TableWidget">
-            <property name="rowCount">
-             <number>10</number>
+           <widget class="PageTableWidget" name="tbw_table" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <row/>
-            <row/>
-            <row/>
-            <row/>
-            <row/>
-            <row/>
-            <row/>
-            <row/>
-            <row/>
-            <row/>
-            <column>
-             <property name="text">
-              <string>表英文名</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>表中文名</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>字段英文名</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>字段中文名</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>字段类型</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>新建列</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>长度</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>转换后类型</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>转换后长度</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>转换后精度</string>
-             </property>
-            </column>
            </widget>
           </item>
          </layout>
@@ -562,6 +505,12 @@ ListWidget::indicator {
    <class>TableWidget</class>
    <extends>QTableWidget</extends>
    <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PageTableWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">testPageTableWidget</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

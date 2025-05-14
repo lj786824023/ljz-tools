@@ -1,9 +1,10 @@
 import os
+import re
 import sys
 
 from PySide6 import QtWidgets
 from PySide6.QtGui import Qt
-from PySide6.QtWidgets import QMainWindow, QWidget, QListWidgetItem, QTableWidgetItem, QComboBox
+from PySide6.QtWidgets import QMainWindow, QWidget, QListWidgetItem, QTableWidgetItem, QComboBox, QSizePolicy
 from loguru import logger
 from openpyxl.reader.excel import load_workbook
 from qfluentwidgets import InfoBar, InfoBarPosition, ComboBox, LineEdit
@@ -36,6 +37,9 @@ class MyMainWindow(QMainWindow):
         self.ui.lsw_setting.itemClicked.connect(self.show_setting)  # 显示配置
         self.ui.lsw_setting.itemChanged.connect(self.rename_setting)  # 重命名配置
         self.ui.btn_save_setting.clicked.connect(self.save_setting)  # 保存配置
+
+        self.ui.tbw_table.itemChanged.connect(self.split_type)  # item内容变化
+        self.ui.btn_trans.clicked.connect(self.translate)  # 开始转换
 
         self.init_ui()
 
@@ -157,9 +161,9 @@ class MyMainWindow(QMainWindow):
         for setting in self.settings:
             self.ui.cbb_setting.addItem(setting)
 
-        self.ui.tbw_table.tbw_table.setRowCount(100)
-        self.ui.tbw_table.tbw_table.setColumnCount(9)
-        self.ui.tbw_table.tbw_table.setHorizontalHeaderLabels(('表英文名','表中文名','字段英文名','字段中文名','字段类型','长度','精度','转换后长度','转换后精度'))
+        # self.ui.tbw_table.tbw_table.setRowCount(100)
+        # self.ui.tbw_table.tbw_table.setColumnCount(9)
+        # self.ui.tbw_table.tbw_table.setHorizontalHeaderLabels(('表英文名','表中文名','字段英文名','字段中文名','字段类型','长度','精度','转换后长度','转换后精度'))
 
         self.ui.tbw_setting.setRowCount(len(self.column_types))
 
@@ -217,38 +221,57 @@ class MyMainWindow(QMainWindow):
         excel_data = list(sheet.values)[1:]
         self.ui.tbw_setting.clearContents()
         for row in range(len(excel_data)):
-            # for col in range(len(excel_data[row])):
-            #     data = QTableWidgetItem(str(excel_data[row][col] or ""))
-            #     combo = ComboBox()
-            #     combo.addItems(('int', 'varchar', 'date'))
-            #     combo.setCurrentIndex(col % 2)
-            #     # self.ui.tbw_setting.setItem(row, col, data)
-            #     self.ui.tbw_setting.setCellWidget(row, col, combo)
-
-            data = QTableWidgetItem(str(excel_data[row][0] or ""))  # 第1列
+            data = QTableWidgetItem(str(excel_data[row][0] or ""))  # 第1列 源类型
             self.ui.tbw_setting.setItem(row, 0, data)
-            combo = ComboBox()  # 第2列
+            combo = ComboBox()  # 第2列 目标类型
             combo.addItems(self.column_types)
             combo.setCurrentIndex(self.column_types.index(excel_data[row][1]))
             self.ui.tbw_setting.setCellWidget(row, 1, combo)
-            combo = ComboBox()  # 第3列
+            combo = ComboBox()  # 第3列 长度转换规则
             combo.addItems(self.column_x_rule)
             combo.setCurrentIndex(self.column_x_rule.index(excel_data[row][2]))
             self.ui.tbw_setting.setCellWidget(row, 2, combo)
             # data = QTableWidgetItem(str(excel_data[row][3] or ""))  # 第4列
             # self.ui.tbw_setting.setItem(row, 3, data)
-            data = LineEdit()  # 第6列
+            data = LineEdit()  # 第4列 长度转换值
             data.setText(str(excel_data[row][3] or ""))
             self.ui.tbw_setting.setCellWidget(row, 3, data)
-            combo = ComboBox()  # 第5列
+            combo = ComboBox()  # 第5列 精度转换规则
             combo.addItems(self.column_y_rule)
             combo.setCurrentIndex(self.column_y_rule.index(excel_data[row][4]))
             self.ui.tbw_setting.setCellWidget(row, 4, combo)
             # data = QTableWidgetItem(str(excel_data[row][5] or ""))  # 第6列
             # self.ui.tbw_setting.setItem(row, 5, data)
-            data = LineEdit()  # 第6列
+            data = LineEdit()  # 第6列 精度转换值
             data.setText(str(excel_data[row][5] or ""))
             self.ui.tbw_setting.setCellWidget(row, 5, data)
+
+    def split_type(self, item: QTableWidgetItem):
+        """拆解类型"""
+        row = item.row()
+        column = item.column()
+        text = item.text()
+
+        if column != 4:  # 只有当字段类型发生变化时才执行
+            return
+
+        new_text = re.split(r"\(|,|\)", text) + ['', '', '']  # 按照(,)拆分
+        self.ui.tbw_table.setItem(row, column + 1, QTableWidgetItem(new_text[0]))  # 拆解类型
+        self.ui.tbw_table.setItem(row, column + 2, QTableWidgetItem(new_text[1]))  # 拆解长度
+        self.ui.tbw_table.setItem(row, column + 3, QTableWidgetItem(new_text[2]))  # 拆解精度
+
+    def translate(self):
+        """开始转换"""
+        # 获取当前配置信息
+        setting = self.ui.cbb_setting.currentText()
+        sheet = self.workbook[setting]
+
+        setting_detail = [[cell.value for cell in row] for row in sheet.iter_rows(min_row=2)] # 获取配置明细
+
+        for row in setting_detail:
+            print(row)
+
+        pass
 
 
 if __name__ == "__main__":

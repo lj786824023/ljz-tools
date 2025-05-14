@@ -117,7 +117,7 @@ class TableWidget(QTableWidget):
         self.customContextMenuRequested.connect(self.showContextMenu)
 
     def showContextMenu(self, pos):
-        menu = RoundMenu(self)
+        menu = RoundMenu()
         align_menu = RoundMenu('对齐方式', self)
 
         insert_action = QAction("插入", self)
@@ -216,6 +216,7 @@ class TableWidget(QTableWidget):
         text = "\n".join(['\t'.join([self.item(row, col).text() if self.item(row, col) is not None else ''
                                      for col in range(selected.leftColumn(), selected.rightColumn() + 1)])
                           for row in range(selected.topRow(), selected.bottomRow() + 1)])
+        text += "\n" # add by ljz
         QApplication.clipboard().setText(text)
 
     def copy_head_selection(self):
@@ -232,8 +233,10 @@ class TableWidget(QTableWidget):
         selected = self.selectedRanges()[0]
         text = QApplication.clipboard().text()
         rows = text.split('\n')
-        if '' in rows:
-            rows.remove('')
+        # if '' in rows:
+        #     rows.remove('')
+        if not rows[-1]: # add by ljz
+            rows = rows[:-1]
 
         for r, row in enumerate(rows):
             if selected.topRow() + r >= self.rowCount():
