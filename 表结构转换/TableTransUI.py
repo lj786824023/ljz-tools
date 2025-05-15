@@ -15,7 +15,7 @@ import qfluentwidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1038, 594)
+        MainWindow.resize(1428, 777)
         MainWindow.setStyleSheet("QMainWindow {\n"
 "     background-color: rgb(237, 246, 248); /* rgb(240, 244, 249)(237, 246, 248) */\n"
 " }")
@@ -59,17 +59,23 @@ class Ui_MainWindow(object):
         self.btn_ddl = qfluentwidgets.PushButton(self.Item1)
         self.btn_ddl.setObjectName("btn_ddl")
         self.horizontalLayout_2.addWidget(self.btn_ddl)
+        self.btn_clear_table = qfluentwidgets.PushButton(self.Item1)
+        self.btn_clear_table.setObjectName("btn_clear_table")
+        self.horizontalLayout_2.addWidget(self.btn_clear_table)
+        self.btn_export = qfluentwidgets.PushButton(self.Item1)
+        self.btn_export.setObjectName("btn_export")
+        self.horizontalLayout_2.addWidget(self.btn_export)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
-        self.PushButton = qfluentwidgets.PushButton(self.Item1)
-        self.PushButton.setObjectName("PushButton")
-        self.horizontalLayout_2.addWidget(self.PushButton)
+        self.btn_ex = qfluentwidgets.PushButton(self.Item1)
+        self.btn_ex.setObjectName("btn_ex")
+        self.horizontalLayout_2.addWidget(self.btn_ex)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.tbw_table = ActionTableWidget(self.Item1)
         self.tbw_table.setRowCount(100)
-        self.tbw_table.setColumnCount(20)
+        self.tbw_table.setColumnCount(12)
         self.tbw_table.setObjectName("tbw_table")
         item = QtWidgets.QTableWidgetItem()
         self.tbw_table.setHorizontalHeaderItem(0, item)
@@ -92,45 +98,9 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tbw_table.setHorizontalHeaderItem(9, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(0, 0, item)
+        self.tbw_table.setHorizontalHeaderItem(10, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(0, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(0, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(0, 4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(1, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(1, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(1, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(1, 4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(2, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(2, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(2, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(2, 4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(3, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(3, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(3, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(3, 4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(4, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(4, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(4, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tbw_table.setItem(4, 4, item)
+        self.tbw_table.setHorizontalHeaderItem(11, item)
         self.horizontalLayout_3.addWidget(self.tbw_table)
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
         self.stackedWidget.addWidget(self.Item1)
@@ -213,129 +183,8 @@ class Ui_MainWindow(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem3)
         self.verticalLayout_4.addLayout(self.horizontalLayout_5)
-        self.tbw_setting = TableWidget(self.widget_setting_right)
-        self.tbw_setting.setStyleSheet("QTableView {\n"
-"    background: transparent;\n"
-"    outline: none;\n"
-"    border: none;\n"
-"    /* font: 13px \'Segoe UI\', \'Microsoft YaHei\'; */\n"
-"    selection-background-color: transparent;\n"
-"    alternate-background-color: transparent;\n"
-"}\n"
-"\n"
-"QTableView[isBorderVisible=true] {\n"
-"    border: 1px solid rgba(0, 0, 0, 15);\n"
-"}\n"
-"\n"
-"QTableView::item {\n"
-"    background: transparent;\n"
-"    border: 0px;\n"
-"    padding-left: 16px;\n"
-"    padding-right: 16px;\n"
-"    height: 35px;\n"
-"}\n"
-"\n"
-"\n"
-"QTableView::indicator {\n"
-"    width: 18px;\n"
-"    height: 18px;\n"
-"    border-radius: 5px;\n"
-"    border: none;\n"
-"    background-color: transparent;\n"
-"}\n"
-"\n"
-"\n"
-"QHeaderView {\n"
-"    background-color: transparent;\n"
-"}\n"
-"\n"
-"QHeaderView::section {\n"
-"    background-color: transparent;\n"
-"    color: rgb(96, 96, 96);\n"
-"    padding-left: 5px;\n"
-"    padding-right: 5px;\n"
-"    border: 1px solid rgba(0, 0, 0, 15);\n"
-"    font: 13px \'Segoe UI\', \'Microsoft YaHei\', \'PingFang SC\';\n"
-"}\n"
-"\n"
-"QHeaderView::section:horizontal {\n"
-"    border-left: none;\n"
-"    height: 33px;\n"
-"}\n"
-"\n"
-"QTableView[isBorderVisible=true] QHeaderView::section:horizontal {\n"
-"    border-top: none;\n"
-"}\n"
-"\n"
-"QHeaderView::section:horizontal:last {\n"
-"    border-right: none;\n"
-"}\n"
-"\n"
-"QHeaderView::section:vertical {\n"
-"    border-top: none;\n"
-"}\n"
-"\n"
-"QHeaderView::section:checked {\n"
-"    background-color: transparent;\n"
-"}\n"
-"\n"
-"QHeaderView::down-arrow {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: center right;\n"
-"    margin-right: 6px;\n"
-"    image: url(:/qfluentwidgets/images/table_view/Down_black.svg);\n"
-"}\n"
-"\n"
-"QHeaderView::up-arrow {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: center right;\n"
-"    margin-right: 6px;\n"
-"    image: url(:/qfluentwidgets/images/table_view/Up_black.svg);\n"
-"}\n"
-"\n"
-"QTableCornerButton::section {\n"
-"    background-color: transparent;\n"
-"    border: 1px solid rgba(0, 0, 0, 15);\n"
-"}\n"
-"\n"
-"QTableCornerButton::section:pressed {\n"
-"    background-color: rgba(0, 0, 0, 12);\n"
-"}\n"
-"\n"
-"ListView,\n"
-"ListWidget {\n"
-"    background: transparent;\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    outline: none;\n"
-"    border: none;\n"
-"    /* font: 13px \'Segoe UI\', \'Microsoft YaHei\'; */\n"
-"    selection-background-color: transparent;\n"
-"    alternate-background-color: transparent;\n"
-"    padding-left: 4px;\n"
-"    padding-right: 4px;\n"
-"}\n"
-"\n"
-"ListView::item,\n"
-"ListWidget::item {\n"
-"    background: transparent;\n"
-"    border: 1px;\n"
-"    padding-left: 11px;\n"
-"    padding-right: 11px;\n"
-"    height: 35px;\n"
-"}\n"
-"\n"
-"\n"
-"ListView::indicator,\n"
-"ListWidget::indicator {\n"
-"    width: 18px;\n"
-"    height: 18px;\n"
-"    border-radius: 5px;\n"
-"    border: none;\n"
-"    background-color: transparent;\n"
-"    margin-right: 4px;\n"
-"}\n"
-"\n"
-"")
+        self.tbw_setting = ActionTableWidget(self.widget_setting_right)
+        self.tbw_setting.setStyleSheet("")
         self.tbw_setting.setRowCount(50)
         self.tbw_setting.setObjectName("tbw_setting")
         self.tbw_setting.setColumnCount(6)
@@ -359,7 +208,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.stackedWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1038, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1428, 30))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -380,7 +229,9 @@ class Ui_MainWindow(object):
         self.cbb_setting.setItemText(2, _translate("MainWindow", "配置2"))
         self.btn_trans.setText(_translate("MainWindow", "开始转换"))
         self.btn_ddl.setText(_translate("MainWindow", "生成DDL"))
-        self.PushButton.setText(_translate("MainWindow", "清空页面"))
+        self.btn_clear_table.setText(_translate("MainWindow", "清空页面"))
+        self.btn_export.setText(_translate("MainWindow", "导出Excel"))
+        self.btn_ex.setText(_translate("MainWindow", "数据案例"))
         item = self.tbw_table.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "表英文名"))
         item = self.tbw_table.horizontalHeaderItem(1)
@@ -398,52 +249,13 @@ class Ui_MainWindow(object):
         item = self.tbw_table.horizontalHeaderItem(7)
         item.setText(_translate("MainWindow", "精度(自动)"))
         item = self.tbw_table.horizontalHeaderItem(8)
-        item.setText(_translate("MainWindow", "转换后长度"))
+        item.setText(_translate("MainWindow", "转换后类型"))
         item = self.tbw_table.horizontalHeaderItem(9)
+        item.setText(_translate("MainWindow", "转换后长度"))
+        item = self.tbw_table.horizontalHeaderItem(10)
         item.setText(_translate("MainWindow", "转换后精度"))
-        __sortingEnabled = self.tbw_table.isSortingEnabled()
-        self.tbw_table.setSortingEnabled(False)
-        item = self.tbw_table.item(0, 0)
-        item.setText(_translate("MainWindow", "tab"))
-        item = self.tbw_table.item(0, 1)
-        item.setText(_translate("MainWindow", "表tab"))
-        item = self.tbw_table.item(0, 2)
-        item.setText(_translate("MainWindow", "c1"))
-        item = self.tbw_table.item(0, 4)
-        item.setText(_translate("MainWindow", "varchar(100)"))
-        item = self.tbw_table.item(1, 0)
-        item.setText(_translate("MainWindow", "tab"))
-        item = self.tbw_table.item(1, 1)
-        item.setText(_translate("MainWindow", "表tab"))
-        item = self.tbw_table.item(1, 2)
-        item.setText(_translate("MainWindow", "c2"))
-        item = self.tbw_table.item(1, 4)
-        item.setText(_translate("MainWindow", "char(10)"))
-        item = self.tbw_table.item(2, 0)
-        item.setText(_translate("MainWindow", "tab"))
-        item = self.tbw_table.item(2, 1)
-        item.setText(_translate("MainWindow", "表tab"))
-        item = self.tbw_table.item(2, 2)
-        item.setText(_translate("MainWindow", "c3"))
-        item = self.tbw_table.item(2, 4)
-        item.setText(_translate("MainWindow", "date"))
-        item = self.tbw_table.item(3, 0)
-        item.setText(_translate("MainWindow", "tab"))
-        item = self.tbw_table.item(3, 1)
-        item.setText(_translate("MainWindow", "表tab"))
-        item = self.tbw_table.item(3, 2)
-        item.setText(_translate("MainWindow", "c4"))
-        item = self.tbw_table.item(3, 4)
-        item.setText(_translate("MainWindow", "number(24,2)"))
-        item = self.tbw_table.item(4, 0)
-        item.setText(_translate("MainWindow", "tab"))
-        item = self.tbw_table.item(4, 1)
-        item.setText(_translate("MainWindow", "表tab"))
-        item = self.tbw_table.item(4, 2)
-        item.setText(_translate("MainWindow", "c5"))
-        item = self.tbw_table.item(4, 4)
-        item.setText(_translate("MainWindow", "date"))
-        self.tbw_table.setSortingEnabled(__sortingEnabled)
+        item = self.tbw_table.horizontalHeaderItem(11)
+        item.setText(_translate("MainWindow", "结果"))
         self.btn_add_setting.setText(_translate("MainWindow", "新增"))
         self.btn_del_setting.setText(_translate("MainWindow", "删除"))
         __sortingEnabled = self.lsw_setting.isSortingEnabled()
@@ -466,5 +278,5 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "精度转换规则"))
         item = self.tbw_setting.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "精度转换值"))
-from qfluentwidgets import ListWidget, TableWidget
+from qfluentwidgets import ListWidget
 from 表结构转换.ActionTableWidget import ActionTableWidget

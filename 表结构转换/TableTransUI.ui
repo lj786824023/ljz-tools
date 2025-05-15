@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1038</width>
-    <height>594</height>
+    <width>1428</width>
+    <height>777</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,6 +91,20 @@ Item2,转换配置</string>
            </widget>
           </item>
           <item>
+           <widget class="PushButton" name="btn_clear_table">
+            <property name="text">
+             <string>清空页面</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="PushButton" name="btn_export">
+            <property name="text">
+             <string>导出Excel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -104,9 +118,9 @@ Item2,转换配置</string>
            </spacer>
           </item>
           <item>
-           <widget class="PushButton" name="PushButton">
+           <widget class="PushButton" name="btn_ex">
             <property name="text">
-             <string>清空页面</string>
+             <string>数据案例</string>
             </property>
            </widget>
           </item>
@@ -120,7 +134,7 @@ Item2,转换配置</string>
              <number>100</number>
             </property>
             <property name="columnCount">
-             <number>20</number>
+             <number>12</number>
             </property>
             <row/>
             <row/>
@@ -264,6 +278,11 @@ Item2,转换配置</string>
             </column>
             <column>
              <property name="text">
+              <string>转换后类型</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
               <string>转换后长度</string>
              </property>
             </column>
@@ -272,116 +291,11 @@ Item2,转换配置</string>
               <string>转换后精度</string>
              </property>
             </column>
-            <column/>
-            <column/>
-            <column/>
-            <column/>
-            <column/>
-            <column/>
-            <column/>
-            <column/>
-            <column/>
-            <column/>
-            <item row="0" column="0">
+            <column>
              <property name="text">
-              <string>tab</string>
+              <string>结果</string>
              </property>
-            </item>
-            <item row="0" column="1">
-             <property name="text">
-              <string>表tab</string>
-             </property>
-            </item>
-            <item row="0" column="2">
-             <property name="text">
-              <string>c1</string>
-             </property>
-            </item>
-            <item row="0" column="4">
-             <property name="text">
-              <string>varchar(100)</string>
-             </property>
-            </item>
-            <item row="1" column="0">
-             <property name="text">
-              <string>tab</string>
-             </property>
-            </item>
-            <item row="1" column="1">
-             <property name="text">
-              <string>表tab</string>
-             </property>
-            </item>
-            <item row="1" column="2">
-             <property name="text">
-              <string>c2</string>
-             </property>
-            </item>
-            <item row="1" column="4">
-             <property name="text">
-              <string>char(10)</string>
-             </property>
-            </item>
-            <item row="2" column="0">
-             <property name="text">
-              <string>tab</string>
-             </property>
-            </item>
-            <item row="2" column="1">
-             <property name="text">
-              <string>表tab</string>
-             </property>
-            </item>
-            <item row="2" column="2">
-             <property name="text">
-              <string>c3</string>
-             </property>
-            </item>
-            <item row="2" column="4">
-             <property name="text">
-              <string>date</string>
-             </property>
-            </item>
-            <item row="3" column="0">
-             <property name="text">
-              <string>tab</string>
-             </property>
-            </item>
-            <item row="3" column="1">
-             <property name="text">
-              <string>表tab</string>
-             </property>
-            </item>
-            <item row="3" column="2">
-             <property name="text">
-              <string>c4</string>
-             </property>
-            </item>
-            <item row="3" column="4">
-             <property name="text">
-              <string>number(24,2)</string>
-             </property>
-            </item>
-            <item row="4" column="0">
-             <property name="text">
-              <string>tab</string>
-             </property>
-            </item>
-            <item row="4" column="1">
-             <property name="text">
-              <string>表tab</string>
-             </property>
-            </item>
-            <item row="4" column="2">
-             <property name="text">
-              <string>c5</string>
-             </property>
-            </item>
-            <item row="4" column="4">
-             <property name="text">
-              <string>date</string>
-             </property>
-            </item>
+            </column>
            </widget>
           </item>
          </layout>
@@ -515,130 +429,9 @@ ListWidget::indicator {
             </layout>
            </item>
            <item>
-            <widget class="TableWidget" name="tbw_setting">
+            <widget class="ActionTableWidget" name="tbw_setting">
              <property name="styleSheet">
-              <string notr="true">QTableView {
-    background: transparent;
-    outline: none;
-    border: none;
-    /* font: 13px 'Segoe UI', 'Microsoft YaHei'; */
-    selection-background-color: transparent;
-    alternate-background-color: transparent;
-}
-
-QTableView[isBorderVisible=true] {
-    border: 1px solid rgba(0, 0, 0, 15);
-}
-
-QTableView::item {
-    background: transparent;
-    border: 0px;
-    padding-left: 16px;
-    padding-right: 16px;
-    height: 35px;
-}
-
-
-QTableView::indicator {
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
-    border: none;
-    background-color: transparent;
-}
-
-
-QHeaderView {
-    background-color: transparent;
-}
-
-QHeaderView::section {
-    background-color: transparent;
-    color: rgb(96, 96, 96);
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 1px solid rgba(0, 0, 0, 15);
-    font: 13px 'Segoe UI', 'Microsoft YaHei', 'PingFang SC';
-}
-
-QHeaderView::section:horizontal {
-    border-left: none;
-    height: 33px;
-}
-
-QTableView[isBorderVisible=true] QHeaderView::section:horizontal {
-    border-top: none;
-}
-
-QHeaderView::section:horizontal:last {
-    border-right: none;
-}
-
-QHeaderView::section:vertical {
-    border-top: none;
-}
-
-QHeaderView::section:checked {
-    background-color: transparent;
-}
-
-QHeaderView::down-arrow {
-    subcontrol-origin: padding;
-    subcontrol-position: center right;
-    margin-right: 6px;
-    image: url(:/qfluentwidgets/images/table_view/Down_black.svg);
-}
-
-QHeaderView::up-arrow {
-    subcontrol-origin: padding;
-    subcontrol-position: center right;
-    margin-right: 6px;
-    image: url(:/qfluentwidgets/images/table_view/Up_black.svg);
-}
-
-QTableCornerButton::section {
-    background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 15);
-}
-
-QTableCornerButton::section:pressed {
-    background-color: rgba(0, 0, 0, 12);
-}
-
-ListView,
-ListWidget {
-    background: transparent;
-    background-color: rgb(255, 255, 255);
-    outline: none;
-    border: none;
-    /* font: 13px 'Segoe UI', 'Microsoft YaHei'; */
-    selection-background-color: transparent;
-    alternate-background-color: transparent;
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-ListView::item,
-ListWidget::item {
-    background: transparent;
-    border: 1px;
-    padding-left: 11px;
-    padding-right: 11px;
-    height: 35px;
-}
-
-
-ListView::indicator,
-ListWidget::indicator {
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
-    border: none;
-    background-color: transparent;
-    margin-right: 4px;
-}
-
-</string>
+              <string notr="true"/>
              </property>
              <property name="rowCount">
               <number>50</number>
@@ -739,7 +532,7 @@ ListWidget::indicator {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1038</width>
+     <width>1428</width>
      <height>30</height>
     </rect>
    </property>
@@ -765,11 +558,6 @@ ListWidget::indicator {
   <customwidget>
    <class>ListWidget</class>
    <extends>QListWidget</extends>
-   <header>qfluentwidgets</header>
-  </customwidget>
-  <customwidget>
-   <class>TableWidget</class>
-   <extends>QTableWidget</extends>
    <header>qfluentwidgets</header>
   </customwidget>
   <customwidget>
