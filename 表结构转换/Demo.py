@@ -175,7 +175,10 @@ class MyMainWindow(QMainWindow):
         # self.ui.tbw_table.tbw_table.setColumnCount(9)
         # self.ui.tbw_table.tbw_table.setHorizontalHeaderLabels(('表英文名','表中文名','字段英文名','字段中文名','字段类型','长度','精度','转换后长度','转换后精度'))
 
-        self.ui.tbw_setting.setRowCount(len(self.column_types))
+        self.ui.tbw_setting.setRowCount(len(self.column_types)) # 设置配置表格行数
+        for row in range(self.ui.tbw_setting.rowCount()):
+            pass
+            # item = QTableWidgetItem("Item")
 
     def rename_setting(self, item: QListWidgetItem):
         """重命名配置"""
@@ -305,6 +308,8 @@ class MyMainWindow(QMainWindow):
         self.ui.tbw_setting.clearContents()
         for row in range(len(excel_data)):
             data = QTableWidgetItem(str(excel_data[row][0] or ""))  # 第1列 源类型
+            data.setFlags(Qt.ItemIsEnabled)  # 禁用编辑标志
+            # item = QTableWidgetItem("Item")
             self.ui.tbw_setting.setItem(row, 0, data)
             combo = ComboBox()  # 第2列 目标类型
             combo.addItems(self.column_types)
@@ -325,9 +330,12 @@ class MyMainWindow(QMainWindow):
             self.ui.tbw_setting.setCellWidget(row, 4, combo)
             # data = QTableWidgetItem(str(excel_data[row][5] or ""))  # 第6列
             # self.ui.tbw_setting.setItem(row, 5, data)
-            data = LineEdit()  # 第6列 精度转换值
-            data.setText(str(excel_data[row][5] or ""))
-            self.ui.tbw_setting.setCellWidget(row, 5, data)
+            # data = LineEdit()  # 第6列 精度转换值
+            # data.setText(str(excel_data[row][5] or ""))
+            # self.ui.tbw_setting.setCellWidget(row, 5, data)
+            item1 = QTableWidgetItem(str(excel_data[row][5] or ""))
+            self.ui.tbw_setting.setItem(row, 5,item1)
+
 
     def split_type(self, item: QTableWidgetItem):
         """拆解类型"""
@@ -362,11 +370,11 @@ class MyMainWindow(QMainWindow):
             #     self.ui.tbw_table.setItem(row,9,QTableWidgetItem(''))
             #     self.ui.tbw_table.setItem(row,10,QTableWidgetItem(''))
 
-            item_x = self.ui.tbw_table.item(row, 6)
-            item_y = self.ui.tbw_table.item(row, 7)
+            item_x = self.ui.tbw_table.item(row, 6) # 长度
+            item_y = self.ui.tbw_table.item(row, 7) # 精度
             text = item_type.text()  # 字段类型
             for line in setting_detail:
-                if line[0] == text:
+                if line[0].lower() == text.lower():
 
                     col_type = line[1]
                     self.ui.tbw_table.setItem(row, 8, QTableWidgetItem(col_type))  # 转换后类型

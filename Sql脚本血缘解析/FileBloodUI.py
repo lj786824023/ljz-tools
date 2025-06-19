@@ -92,7 +92,7 @@ class Ui_MainWindow(object):
         self.edt_file_content = TextEdit(self.layoutWidget_2)
         self.edt_file_content.setObjectName(u"edt_file_content")
         self.edt_file_content.setLineWrapMode(QTextEdit.NoWrap)
-        self.edt_file_content.setReadOnly(True)
+        self.edt_file_content.setReadOnly(False)
 
         self.verticalLayout_12.addWidget(self.edt_file_content)
 

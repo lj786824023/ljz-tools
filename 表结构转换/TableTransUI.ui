@@ -55,7 +55,7 @@ Item2,转换配置</string>
  }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Item1">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -514,6 +514,16 @@ ListWidget::indicator {
              <column>
               <property name="text">
                <string>精度转换值</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>长度缺省值</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>精度缺省值</string>
               </property>
              </column>
             </widget>

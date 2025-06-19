@@ -187,7 +187,7 @@ class Ui_MainWindow(object):
         self.tbw_setting.setStyleSheet("")
         self.tbw_setting.setRowCount(50)
         self.tbw_setting.setObjectName("tbw_setting")
-        self.tbw_setting.setColumnCount(6)
+        self.tbw_setting.setColumnCount(8)
         item = QtWidgets.QTableWidgetItem()
         self.tbw_setting.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -200,6 +200,10 @@ class Ui_MainWindow(object):
         self.tbw_setting.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
         self.tbw_setting.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tbw_setting.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tbw_setting.setHorizontalHeaderItem(7, item)
         self.verticalLayout_4.addWidget(self.tbw_setting)
         self.horizontalLayout_6.addWidget(self.widget_setting_right)
         self.horizontalLayout_6.setStretch(0, 1)
@@ -216,7 +220,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -278,5 +282,9 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "精度转换规则"))
         item = self.tbw_setting.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "精度转换值"))
+        item = self.tbw_setting.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "长度缺省值"))
+        item = self.tbw_setting.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "精度缺省值"))
 from qfluentwidgets import ListWidget
 from 表结构转换.ActionTableWidget import ActionTableWidget
