@@ -334,10 +334,10 @@ class MyMainWindow(QMainWindow):
             item = QTableWidgetItem(str(excel_data[row][5] or ""))  # 第6列 精度转换值
             self.ui.tbw_setting.setItem(row, 5, item)
 
-            item = QTableWidgetItem(str(excel_data[row][5] or ""))  # 第7列 长度度默认值
+            item = QTableWidgetItem(str(excel_data[row][6] or ""))  # 第7列 长度度默认值
             self.ui.tbw_setting.setItem(row, 6, item)
 
-            item = QTableWidgetItem(str(excel_data[row][5] or ""))  # 第8列 精度默认值
+            item = QTableWidgetItem(str(excel_data[row][7] or ""))  # 第8列 精度默认值
             self.ui.tbw_setting.setItem(row, 7, item)
 
     def split_type(self, item: QTableWidgetItem):
@@ -401,6 +401,8 @@ class MyMainWindow(QMainWindow):
                     result = '6'
 
                     if not x and not y:  # 长度精度同时为空
+                        result = col_type  # decimal
+                        """
                         if text.lower() == 'number':
                             x_default = line[6]  # 默认长度
                             y_default = line[7]  # 默认精度
@@ -411,6 +413,8 @@ class MyMainWindow(QMainWindow):
                                     result = f"{col_type}({x_default})"  # decimal(n)
                                 else:
                                     result = f"{col_type}({x_default},{y_default})"  # decimal(n,m)
+                        """
+
 
                     if x and not y:  # 精度为空
                         result = f"{col_type}({x})"
@@ -422,11 +426,24 @@ class MyMainWindow(QMainWindow):
 
                     # break
 
-                    # number类型特殊处理
-                    if text.lower() == 'number' and not self.ui.tbw_table.item(row, 8):
-                        self.ui.tbw_table.setItem(row, 8, QTableWidgetItem(line[6] or ""))  # 转换后长度
-                        if not self.ui.tbw_table.item(row, 9):
-                            self.ui.tbw_table.setItem(row, 9, QTableWidgetItem(line[6] or ""))  # 转换后精度
+                    # number类型长度、精度为空特殊处理
+                    if text.lower() == 'number' and self.ui.tbw_table.item(row, 6).text() =='' and self.ui.tbw_table.item(row, 7).text() == '': # number类型 原始长度精度为空
+
+                        self.ui.tbw_table.setItem(row, 9, QTableWidgetItem(line[6] or ""))  # 设置转换后长度
+                        self.ui.tbw_table.setItem(row, 10, QTableWidgetItem(line[7] or ""))  # 设置转换后精度
+
+                        if line[6] : # 如果默认长度有值
+                            if line[7] : # 如果默认精度有值
+                                result = f"{line[1]}({line[6]},{line[7]})" # decimal(12,2)
+                            else:
+                                result = f"{line[1]}({line[6]})"  # decimal(12)
+                            # self.ui.tbw_table.setItem(row, 11, QTableWidgetItem(result))  # 转换后精度
+                        else:
+                            result = col_type # decimal
+
+                        self.ui.tbw_table.setItem(row, 11, QTableWidgetItem(result))  # 设置最终结果
+
+
 
 
 if __name__ == "__main__":
