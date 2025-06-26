@@ -447,6 +447,10 @@ class MyMainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
+    # pyinstaller.exe .\Demo.py -w --paths C:\Users\lojn\PycharmProjects\ljz-tools --add-data .\_internal\aaa_etc\*:aaa_etc
+    # -w 隐藏cmd窗口执行
+    # --paths 额外指定import的搜索路径
+    # --paths 把指定文件放入打包后的目标文件夹内
     app = QtWidgets.QApplication(sys.argv)
     ui = MyMainWindow()
     ui.show()
