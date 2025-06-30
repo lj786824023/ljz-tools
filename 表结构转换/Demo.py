@@ -1,14 +1,15 @@
 import os
 import re
 import sys
+from datetime import datetime
 
 from PySide6 import QtWidgets
-from PySide6.QtGui import Qt
+from PySide6.QtGui import Qt, QIcon
 from PySide6.QtWidgets import QMainWindow, QWidget, QListWidgetItem, QTableWidgetItem, QComboBox, QSizePolicy, QDialog, \
     QTextEdit, QPushButton, QVBoxLayout
 from loguru import logger
 from openpyxl.reader.excel import load_workbook
-from qfluentwidgets import InfoBar, InfoBarPosition, ComboBox, LineEdit, Dialog, TextEdit
+from qfluentwidgets import InfoBar, InfoBarPosition, ComboBox, LineEdit, Dialog, TextEdit, MessageBox
 
 from 表结构转换.ConfigFile import ConfigFile
 from 表结构转换.TableTransUI import Ui_MainWindow
@@ -77,6 +78,20 @@ class MyMainWindow(QMainWindow):
         target.title = setting_name
 
         self.workbook.save(self.setting_file)
+
+    def check_enable(self):
+        """检查工具是否到期"""
+        current_date = datetime.now().date()  # 获取当前日期
+        enable_date = datetime.strptime("2025-12-31", "%Y-%m-%d").date()  # 工具有效期
+        if current_date > enable_date:
+            # QMessageBox.information(None, "消息", "已到使用有效期！", QMessageBox.Close)
+            w = MessageBox("消息", "已到使用有效期！", self)
+            if w.exec():
+                self.close()
+                sys.exit()
+            else:
+                self.close()
+                sys.exit()
 
     def clear_table(self):
         """清空页面"""
@@ -153,32 +168,33 @@ class MyMainWindow(QMainWindow):
 
     def init_ui(self):
         """初始化ui"""
-
+        window_icon = QIcon(f"{os.path.dirname(sys.argv[0])}/_internal/aaa_etc/weixinshoucang.ico")
+        # 设置窗口图标
+        self.setWindowIcon(window_icon)
         # 读取配置清单
         # self.wb = load_workbook(self.setting_file)
         st = self.workbook["配置清单"]
         self.settings = [row[0] for row in st.iter_rows(min_row=1, max_col=1, values_only=True)]
+        self.settings.sort(key=lambda x:x.lower()) # 不区分大小写排升序
 
         # 初始化配置清单
         self.ui.lsw_setting.clear()
         for setting in self.settings:
             item = QListWidgetItem(setting)
-            item.setFlags(item.flags() | Qt.ItemIsEditable)
+            item.setFlags(item.flags() | Qt.ItemIsEditable) # 可编辑
             self.ui.lsw_setting.addItem(item)
 
         # 初始化下拉框
         self.ui.cbb_setting.clear()
-        for setting in self.settings:
-            self.ui.cbb_setting.addItem(setting)
+        self.ui.cbb_setting.addItems(self.settings)
+        # for setting in self.settings:
+        #     self.ui.cbb_setting.addItem(setting)
 
         # self.ui.tbw_table.tbw_table.setRowCount(100)
         # self.ui.tbw_table.tbw_table.setColumnCount(9)
         # self.ui.tbw_table.tbw_table.setHorizontalHeaderLabels(('表英文名','表中文名','字段英文名','字段中文名','字段类型','长度','精度','转换后长度','转换后精度'))
 
         self.ui.tbw_setting.setRowCount(len(self.column_types))  # 设置配置表格行数
-        for row in range(self.ui.tbw_setting.rowCount()):
-            pass
-            # item = QTableWidgetItem("Item")
 
     def rename_setting(self, item: QListWidgetItem):
         """重命名配置"""
@@ -447,11 +463,12 @@ class MyMainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
-    # pyinstaller.exe .\Demo.py -w --paths C:\Users\lojn\PycharmProjects\ljz-tools --add-data .\_internal\aaa_etc\*:aaa_etc
+    # pyinstaller.exe .\Demo.py -w --paths C:\Users\lojn\PycharmProjects\ljz-tools --add-data .\_internal\aaa_etc\*:aaa_etc -i C:\Users\lojn\PycharmProjects\DataView\img\weixinshoucang.ico
     # -w 隐藏cmd窗口执行
     # --paths 额外指定import的搜索路径
     # --paths 把指定文件放入打包后的目标文件夹内
     app = QtWidgets.QApplication(sys.argv)
     ui = MyMainWindow()
     ui.show()
+    ui.check_enable() # 检查有效期
     sys.exit(app.exec())

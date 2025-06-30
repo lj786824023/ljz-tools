@@ -26,6 +26,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.Pivot = qfluentwidgets.Pivot(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.Pivot.sizePolicy().hasHeightForWidth())
+        self.Pivot.setSizePolicy(sizePolicy)
         self.Pivot.setObjectName("Pivot")
         self.Pivot.addItem("Item1", "")
         self.Pivot.addItem("Item2", "")
@@ -215,17 +220,14 @@ class Ui_MainWindow(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1428, 30))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "转换"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "表结构转换          Developed by LJZ，QQ：786824023"))
         self.Pivot.setItemText("Item1", _translate("MainWindow", "开始转换"))
         self.Pivot.setItemText("Item2", _translate("MainWindow", "转换配置"))
         self.cbb_setting.setItemText(0, _translate("MainWindow", "--选择配置文件--"))

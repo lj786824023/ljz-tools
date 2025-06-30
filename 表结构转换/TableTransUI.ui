@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>转换</string>
+   <string>表结构转换          Developed by LJZ，QQ：786824023</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
@@ -24,6 +24,12 @@
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="Pivot" name="Pivot">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="items_" stdset="0">
          <string>Item1,开始转换
 Item2,转换配置</string>
@@ -55,7 +61,7 @@ Item2,转换配置</string>
  }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Item1">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -547,7 +553,6 @@ ListWidget::indicator {
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
   <customwidget>
