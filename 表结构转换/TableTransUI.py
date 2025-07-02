@@ -227,7 +227,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "表结构转换          Developed by LJZ，QQ：786824023"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "表结构转换										Developed by LJZ，QQ：786824023"))
         self.Pivot.setItemText("Item1", _translate("MainWindow", "开始转换"))
         self.Pivot.setItemText("Item2", _translate("MainWindow", "转换配置"))
         self.cbb_setting.setItemText(0, _translate("MainWindow", "--选择配置文件--"))

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>表结构转换          Developed by LJZ，QQ：786824023</string>
+   <string>表结构转换										Developed by LJZ，QQ：786824023</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
