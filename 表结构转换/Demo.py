@@ -168,7 +168,7 @@ class MyMainWindow(QMainWindow):
 
     def init_ui(self):
         """初始化ui"""
-        window_icon = QIcon(f"{os.path.dirname(sys.argv[0])}/_internal/aaa_etc/weixinshoucang.ico")
+        window_icon = QIcon(f"{os.path.dirname(sys.argv[0])}/_internal/aaa_etc/application.ico")
         # 设置窗口图标
         self.setWindowIcon(window_icon)
         # 读取配置清单
@@ -463,7 +463,7 @@ class MyMainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
-    # pyinstaller.exe .\Demo.py -w --paths C:\Users\lojn\PycharmProjects\ljz-tools --add-data .\_internal\aaa_etc\*:aaa_etc -i C:\Users\lojn\PycharmProjects\DataView\img\weixinshoucang.ico
+    # pyinstaller.exe .\Demo.py -w --paths C:\Users\lojn\PycharmProjects\ljz-tools --add-data .\_internal\aaa_etc\*:aaa_etc -i C:\Users\lojn\PycharmProjects\DataView\img\application.ico
     # -w 隐藏cmd窗口执行
     # --paths 额外指定import的搜索路径
     # --paths 把指定文件放入打包后的目标文件夹内
